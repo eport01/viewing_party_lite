@@ -3,7 +3,7 @@
 <center><%=button_to "Create Viewing Party for #{@results[:title]}"%></center>
 
 <h3>Genre: <%=@results[:genres].pluck(:name)%></h3>
-<h3>Vote: <%=@results[:vote_average]%></h3>
+<h3>Vote: <%= @results[:vote_average]%></h3>
 <h3>Summary: <%=@results[:overview]%></h3>
 <h3>Runtime: <%=@results[:runtime]%></h3>
 <h3>Cast <%@cast[:cast].take(10).each do |cast_member|%></h3>
@@ -17,6 +17,3 @@
     <br>
   <%end%>
 <%end%>
-
-
-

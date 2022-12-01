@@ -2,19 +2,15 @@
 Rails.application.routes.draw do
   root("welcome#index")
 
-  resources :users, except: [:new, :create] do 
-    resources :movies
-    get '/discover', to: 'discover#index'
+  resources(:users,   except: [:new, :create]) do
+    resources(:movies) do
+      resources(:viewing_party)
+      get("/discover",       to: "discover#index")
+    end
+
     # get '/movies', to: 'movies#top_rated'
     # get '/movies/search', to: 'movies#search'
+    get("/register",     to: "users#new")
+    post("/register",     to: "users#create")
   end
-  get("/register",   to: "users#new")
-  post("/register",   to: "users#create")
-
-  
-
-  
-
-
-  #discover controller to call API? "users/:id/discover"
 end
