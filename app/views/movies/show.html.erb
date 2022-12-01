@@ -10,10 +10,10 @@
   <p><strong>Actor Name: </strong><%=cast_member[:name]%>
   <strong>Character Name: </strong><%=cast_member[:character]%></p>
 <%end%>
-<h3><%=@reviews.count%> Reviews</h3>
+<h3><%=@reviews[:results].count%> Reviews</h3>
 <%@reviews[:results].each do |result|%>
   <%if result[:author] != nil %>
-    <p><%=result[:content]%></p>
+    <p><li><%=result[:content]%></li></p>
     <br>
   <%end%>
 <%end%>
