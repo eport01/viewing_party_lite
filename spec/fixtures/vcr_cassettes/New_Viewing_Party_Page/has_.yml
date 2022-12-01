@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/?api_key=<movies_api_key>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Thu, 01 Dec 2022 22:51:40 GMT
+      Server:
+      - openresty
+      X-Cascade:
+      - pass
+      Vary:
+      - Accept-Encoding,Accept-Encoding,Accept-Encoding
+      - Origin
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 80e637d12d05a8212382cb26f2ad9788.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - LAX50-P3
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - ui9ADiWAF4B6pYNLSFjoZ36D0B-QAp2FWjl6NjqZhXSjej9QJHvFRA==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"success":false,"status_code":34,"status_message":"The resource you
+        requested could not be found."}'
+  recorded_at: Thu, 01 Dec 2022 22:51:40 GMT
+recorded_with: VCR 6.1.0
