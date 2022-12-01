@@ -4,7 +4,7 @@
 
 <h3>Genre: <%=@results[:genres].pluck(:name)%></h3>
 <h3>Vote: <%=@results[:vote_average]%></h3>
-<h3>Summary: <%=@results[:overview]%></h3>
+<h3>Summary: </h3><p><%=@results[:overview]%></p>
 <h3>Runtime: <%=@results[:runtime]%></h3>
 <h3>Cast <%@cast[:cast].take(10).each do |cast_member|%></h3>
   <p><strong>Actor Name: </strong><%=cast_member[:name]%>
