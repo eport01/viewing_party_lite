@@ -1,11 +1,20 @@
 <center><h2><%=@results[:title]%></h2></center>
 <center><%=button_to "Discover Movies", user_discover_path(@user), method: :get%></center>
 <center><%=button_to "Create Viewing Party for #{@results[:title]}"%></center>
+<br><br>
+<table style="width:100%">
+  <tr>
+    <td><strong>Vote: </strong><%=@results[:vote_average]%></td>
+    <td><strong>Runtime: </strong><%=@results[:runtime]%></td>
+    <td><strong>Genre: </strong><%@results[:genres].each do |genre|%>
+      <%=genre[:name]%> 
+    <%end%></td>
+  </tr>
+</table>
 
-<h3>Genre: <%=@results[:genres].pluck(:name)%></h3>
-<h3>Vote: <%=@results[:vote_average]%></h3>
+<section>
+<hr>
 <h3>Summary: </h3><p><%=@results[:overview]%></p>
-<h3>Runtime: <%=@results[:runtime]%></h3>
 <h3>Cast <%@cast[:cast].take(10).each do |cast_member|%></h3>
   <p><strong>Actor Name: </strong><%=cast_member[:name]%>
   <strong>Character Name: </strong><%=cast_member[:character]%></p>
@@ -17,6 +26,7 @@
     <br>
   <%end%>
 <%end%>
+</section>
 
 
 
