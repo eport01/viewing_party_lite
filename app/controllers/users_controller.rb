@@ -3,23 +3,28 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
   end
 
   def create
-    @user = User.new(    name: params[:name],     email: params[:email])
+    @user = User.new(user_params)
 
     if @user.valid?
       @user.save
-      redirect_to((root_path))
+      redirect_to(user_path(@user))
     else
-      flash[:alert] = "Try Again"
+      flash[:alert] = @user.errors.full_messages
+      redirect_to("/register")
     end
   end
 
-  def show 
-    @user = User.find(params[:id])
-  end
+  private
 
-  
+  def user_params
+    params.permit(:name, :email)
+  end
 end
