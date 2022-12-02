@@ -4,8 +4,21 @@
 <%=button_to "Discover Movies", user_discover_path(@user), method: :get%>
 </div>
 
-<%@user.viewing_parties.each do |party| %>
+
+<%@parties.each do |party| %>
   <p><%=party.movie_title %></p>
   <p><%=party.duration %> minutes</p>
+  <%if party.status == "Host"%>
+    <p>Hosting</p>
+  <%else%>
+    <p>Attending</p>
+  <%end%>
+  <p><h3>Attendees: </h3></p>
+  <%party.users.each do |user|%>
+    <%if user != @user %>
+      <p><%=user.name%></p>
+    <%end%>
+  <%end%>
+
 
 <% end %>
