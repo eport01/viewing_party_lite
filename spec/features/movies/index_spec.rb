@@ -28,5 +28,12 @@ RSpec.describe("discover movies page or movies index page ") do
       expect(page).to(have_content("The Godfather Part III Vote Average: 7.4"))
       expect(page).to_not(have_content("Dilwale Dulhania Le Jayenge Vote Average: 8.6"))
     end
+
+    it 'sad path testing for blank search entry' do 
+      visit(user_discover_path(@steve))
+      click_button("Submit")
+      expect(page).to have_content("Search can't be blank!")
+      expect(current_path).to eq(user_discover_path(@steve))
+    end
   end
 end

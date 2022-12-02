@@ -1,6 +1,7 @@
 
 
 <%=button_to "Discover Movies", user_discover_path(@user), method: :get%>
+<%if params[:keyword] != "" %>
 <%@results.each do |result|%>
   <p>
   <%=link_to result.title, user_movie_path(@user, result.id) %>
@@ -11,4 +12,5 @@
       </div>
   </div>
   </p>
+<%end%>
 <%end%>

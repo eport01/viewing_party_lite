@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
 
   def show
     @user = User.find(params[:id])
-    @viewing_party = ViewingParty.find(params[:id])
   end
 
   def new
@@ -13,7 +9,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.valid?
       @user.save
       redirect_to(user_path(@user.id))
