@@ -29,3 +29,10 @@
 <%end%>
 
 <center> <h3>Invite Other Users</h3></center>
+<% @users.each do |user| %>
+  <center><%= form_with url: user_movie_viewing_parties_path(@user,@result.id), method: :post, local: true do |form| %>
+  <%= form.check_box :user %>
+  <%= form.label :user, user.email %>
+  <%= form.label :user, user.name %>
+<% end %></center>
+<% end %>
