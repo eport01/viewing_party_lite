@@ -24,7 +24,7 @@ class ViewingPartiesController < ApplicationController
     params.permit(:duration, :date, :time, :movie_id, :movie_title)
   end
 
-  def index
-    @viewing_parties = ViewingParties.all
-  end
+  # def index
+  #   @viewing_parties = ViewingParties.all
+  # end
 end
