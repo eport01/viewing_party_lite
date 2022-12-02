@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     elsif params[:keyword] != "" 
       @results = MovieFacade.keyword(params[:keyword])
     else
-      flash[:notice] = "Try Again"
+      flash[:notice] = "Search can't be blank!"
       redirect_to user_discover_path(@user)
     end
   end
