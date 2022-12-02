@@ -1,5 +1,7 @@
-<h1>Create a Movie Party for ##API CALL MOVIE TITLE</h1>
-<center><%=button_to "Discover Movies"%> ##fix route </center>
+
+<h1>Create a Movie Party for <%=@result.title%></h1>
+
+<center><%=button_to "Discover Movies", user_discover_path(@user), method: :get%></center>
 
 <%= form_with url: "/register", method: :post, local: true do |form| %>
 
@@ -11,13 +13,21 @@
       <p><%= form.label :time ,"Start Time" %></p>
     </div>
     <div class="column">
-      <p><%= form.label :movie_title ,"API call for Movie Title" %></p>
-      <p><%=form.time_select :duration, discard_hour: true, max: '100',:default => {:minute => '00'}%></p>
+      <p><%= form.label :movie_title %> <%=  @result.title %></p>
+      <p><%=form.number_field :duration,:default => @result.runtime %></p>
       <p><%=form.date_field :date, min: Date.today%></p>
       <p><%=form.time_field :time, order: Time.now%></p>
       <% end %>
     </div>
   </div>
-  <center> <h2>Invite Other Users</h2></center>
+    <center> <h2>Invite Other Users</h2></center>
+
+    <% @users.each do |user| %>
+      <center><%= form_with url: user_movie_viewing_parties_path(@user,@result.id), method: :post, local: true do |form| %>
+      <%= form.check_box :user %>
+      <%= form.label :user, user.email %>
+      <%= form.label :user, user.name %>
+    <% end %></center>
+  <% end %>
 
 <center><%=button_to "Create party",user_path(@user), method: :get %></center>

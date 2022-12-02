@@ -9,7 +9,8 @@ RSpec.describe("New Viewing Party Page") do
   end
 
   it("has ", :vcr) do
-    expect(page).to(have_content("viewing party"))
+    save_and_open_page
+    expect(page).to(have_content("Viewing Party"))
     expect(page).to(have_content("The Godfather"))
     expect(page).to(have_button("Discover Page"))
     fill_in(:duration_of_Party,     with: "120")

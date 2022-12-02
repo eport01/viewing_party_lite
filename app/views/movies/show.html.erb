@@ -1,7 +1,8 @@
 
   <center><h2><%=@result.title%></h2></center>
+  <center><img src=<%=@result.pic%> alt="images" width="200" height="300"></center>
   <center><%=button_to "Discover Movies", user_discover_path(@user), method: :get%></center>
-  <center><%=button_to "Create Viewing Party for #{@result.title}"%></center>
+  <center><%=button_to "Create Viewing Party for #{@result.title}",new_user_movie_viewing_party_path(@user.id, @result.id), method: :get %></center>
   <br><br>
   <table style="width:100%">
     <tr>
