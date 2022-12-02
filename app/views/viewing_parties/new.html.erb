@@ -1,0 +1,15 @@
+<h1>Create a Movie Party for ##API CALL MOVIE TITLE</h1>
+
+<%= form_with url: "/users/#{@user.id}/movies/#{@result.id}/viewing_parties", method: :post, local: true do |form| %>
+  <p><%= form.label :movie_title , "Movie Title: #{@result.title}" %></p>
+  <p><%= form.label :duration ,"Duration of Party" %></p>
+  <p><%= form.text_area :duration  %></p>
+  <p><%= form.label :date ,"Day" %></p>
+  <p><%= form.text_area :date  %></p>
+  <p><%= form.label :time ,"Start Time" %></p>
+  <p><%= form.label :time %></p>
+  <p><%= form.submit "Create Party"%></p>
+<%end%>
+
+<center> <h2>Invite Other Users</h2></center>
+
