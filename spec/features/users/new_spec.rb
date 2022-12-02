@@ -18,6 +18,7 @@ RSpec.describe("New Register Page") do
         click_on("Create New User")
         new_user = User.last.id
         expect(current_path).to(eq(user_path(new_user)))
+
       end
     end
   end
