@@ -2,19 +2,22 @@
 <center><%=button_to "Discover Movies"%> ##fix route </center>
 
 <%= form_with url: "/register", method: :post, local: true do |form| %>
-<div class="column">
-  <%= form.label :movie_title ,"Movie title" %>
 
-
-  </div>
   <div class="row">
+    <div class="column">
+      <p><%= form.label :movie_title ,"Movie title" %></p>
+      <p><%= form.label :duration ,"Duration of Party" %></p>
+      <p><%= form.label :date ,"Day" %></p>
+      <p><%= form.label :time ,"Start Time" %></p>
+    </div>
+    <div class="column">
+      <p><%= form.label :movie_title ,"API call for Movie Title" %></p>
+      <p><%=form.time_select :duration, discard_hour: true, max: '100',:default => {:minute => '00'}%></p>
+      <p><%=form.date_field :date, min: Date.today%></p>
+      <p><%=form.time_field :time, order: Time.now%></p>
+      <% end %>
+    </div>
+  </div>
+  <center> <h2>Invite Other Users</h2></center>
 
-
-<%= form.label :movie_title ,"API call for Movie Title" %>
-
-
-</div>
-<%= form.label :email, "Email" %>
-<%= form.text_field :email %>
-<%= form.submit 'Create New User' %>
-<% end %>
+<center><%=button_to "Create party",user_path(@user), method: :get %></center>
