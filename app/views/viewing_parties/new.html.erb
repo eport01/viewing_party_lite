@@ -9,8 +9,8 @@
     </tr>
 
     <tr>
-      <td><p><%= form.label :duration ,"Duration of Party" %>
-      <%=form.number_field :duration %> </p></td>
+      <td><p><%= form.label :duration ,"Duration of Party (needs to be greater than #{@result.runtime} minutes): " %>
+      <%=form.number_field :duration, min: @result.runtime %> </p></td>
     </tr>
 
     <tr>
