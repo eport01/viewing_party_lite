@@ -1,5 +1,4 @@
-
-  <center><h2><%=@result.title%></h2></center>
+<center><h2><%=@result.title%></h2></center>
   <center><%=button_to "Discover Movies", user_discover_path(@user), method: :get%></center>
   <center><%=button_to "Create Viewing Party for #{@result.title}"%></center>
   <br><br>
@@ -21,6 +20,7 @@
 <h3>Cast <%@cast.take(10).each do |cast_member|%></h3>
   <p><strong>Actor Name: </strong><%=cast_member.name%>
   <strong>Character Name: </strong><%=cast_member.character%></p>
+
 <%end%>
 <h3><%=@reviews.count%> Reviews</h3>
 <%@reviews.each do |review|%>
@@ -30,6 +30,4 @@
 <%end%>
 <%end%>
 </section>
-
-
 

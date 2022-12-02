@@ -15,10 +15,11 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.save
-      redirect_to(user_path(@user))
+
+      redirect_to(user_path(@user.id))
     else
       flash[:alert] = @user.errors.full_messages
-      redirect_to("/register")
+      redirect_to(register_path)
     end
   end
 
