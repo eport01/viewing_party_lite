@@ -10,7 +10,6 @@ class ViewingPartiesController < ApplicationController
     @user = User.find(params[:user_id])
     @result = MovieFacade.results(params[:movie_id])
     @viewing_party = ViewingParty.create!(parties_params)
-    require 'pry'; binding.pry
     redirect_to user_path(@user)
   end
 
