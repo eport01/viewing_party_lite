@@ -3,12 +3,14 @@ require "rails_helper"
 
 RSpec.describe("New Register Page") do
   before(:each) do
+    @steve = User.create!(    name: "Steve",     email: "steve.smith@gmail.com")
+    @mary = User.create!(    name: "Mary",     email: "mary.smith@gmail.com")
     visit("/register")
   end
 
   describe("when i vist root_path theres a linke to create a new register") do
     describe("When I click on the link it takes me a to a form to create a new item") do
-      it("the form has fields for name and email,when i click submit im redirected back to root_path where i see the new register") do
+      it("the form has fields for name and email,when i click submit im redirected back to /users/:id where i see the new register") do
         expect(page).to(have_field("Name"))
         expect(page).to(have_field("Email"))
         fill_in("Name",         with: "Milo")
@@ -21,7 +23,6 @@ RSpec.describe("New Register Page") do
 
     describe 'sad path testing' do 
       it 'shows a flash message when a user enters a username thats already been used' do 
-        @mary = User.create!(name: "Mary", email: "mary.smith@gmail.com")
         fill_in("Name",         with: "Mary")
         fill_in("Email",         with: "mary.smith@gmail.com")
         click_on("Create New User")

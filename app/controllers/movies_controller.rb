@@ -12,8 +12,9 @@ class MoviesController < ApplicationController
     #if param keyword 
   end
 
-  def show 
+  def show
     @user = User.find(params[:user_id])
+
 
     # require 'pry'; binding.pry
     @result = MovieFacade.results(params[:id]) 
