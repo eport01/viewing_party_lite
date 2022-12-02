@@ -5,10 +5,13 @@ class MoviesController < ApplicationController
     #if param q
     if params[:q]
       @results = MovieFacade.top_rated
-    end
+    
 
-    if params[:keyword]
+    elsif params[:keyword] != "" 
       @results = MovieFacade.keyword(params[:keyword])
+    else
+      flash[:notice] = "Try Again"
+      redirect_to user_discover_path(@user)
     end
   end
 
