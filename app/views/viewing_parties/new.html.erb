@@ -23,12 +23,19 @@
       <%=form.time_field :time, order: Time.now%></p></td>
     </tr>
 
+
+
     <tr>
-      <td>
-        <%=form.label :invitees, "Invite Other Users: "%>
-        <p><%=form.collection_check_boxes(:invitees, User.all, :id, :name)%></p>
-      </td>
+    <%=form.label :attendees, "Invite Other Users: "%>
+
+    <p><% @users.each do |user| %>
+      <% if user != @user %>
+        <%= form.label :attendees, "#{user.name}" %>
+        <%= form.check_box :attendees, {multiple: true}, "#{user.id}", nil %>
+      <% end %>
+    <% end %></p>
     </tr>
+
   </table>
   <p><%= form.submit "Create Party"%></p>
 

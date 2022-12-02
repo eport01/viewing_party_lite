@@ -8,8 +8,21 @@ class ViewingPartiesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @result = MovieFacade.results(params[:movie_id])
-    @viewing_party = ViewingParty.create!(parties_params)
-    @user_party = UserViewingParty.create!(status: "Host", viewing_party_id: @viewing_party.id, user_id: @user.id)
+    @viewing_party = ViewingParty.new(parties_params)
+
+    if @viewing_party.save 
+      @user_party = UserViewingParty.create!(status: "Host", viewing_party: @viewing_party, user: @user)
+      if params[:attendees]
+        attendees = User.find(params[:attendees])
+        # require 'pry'; binding.pry
+        attendees.each do |attendee|
+          UserViewingParty.create!(user: attendee , viewing_party: @viewing_party, status: "Attending")
+
+        end
+      end
+    end
+
+    # require 'pry'; binding.pry
     redirect_to(user_path(@user))
   end
 
