@@ -1,15 +1,31 @@
-<h1>Create a Movie Party for ##API CALL MOVIE TITLE</h1>
 
 <%= form_with url: "/users/#{@user.id}/movies/#{@result.id}/viewing_parties", method: :post, local: true do |form| %>
-  <p><%= form.label :movie_title , "Movie Title: #{@result.title}" %></p>
-  <p><%= form.label :duration ,"Duration of Party" %></p>
-  <p><%= form.text_area :duration  %></p>
-  <p><%= form.label :date ,"Day" %></p>
-  <p><%= form.text_area :date  %></p>
-  <p><%= form.label :time ,"Start Time" %></p>
-  <p><%= form.label :time %></p>
-  <p><%= form.submit "Create Party"%></p>
+  <center>
+  <table>
+    <p><h3><%= form.label :movie_title , "Create a Movie Party for #{@result.title}" %></h3></p>
+    <%=form.hidden_field :movie_title, :value => @result.title%>
+    <tr>
+    </tr>
+    
+    <tr>
+      <td><p><%= form.label :duration ,"Duration of Party" %>
+      <%=form.number_field :duration %> </p></td>
+    </tr>
+
+    <tr>
+      <td><p><%= form.label :date ,"Day" %>
+      <%=form.date_field :date, min: Date.today%></p></td>
+    </tr>
+
+    <tr>
+      <td><p><%= form.label :time ,"Start Time" %>
+      <%=form.time_field :time, order: Time.now%></p></td>
+    </tr>
+    <p><%= form.submit "Create Party"%></p>
+  </table>
+  </center>
+
 <%end%>
 
-<center> <h2>Invite Other Users</h2></center>
+<center> <h3>Invite Other Users</h3></center>
 
