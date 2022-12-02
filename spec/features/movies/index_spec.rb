@@ -8,9 +8,9 @@ RSpec.describe("discover movies page or movies index page ") do
       @mary = User.create!(      name: "Mary",       email: "mary.smith@gmail.com")
     end
 
-    it 'shows a list of top rated movies from the api', :vcr do
+    it("shows a list of top rated movies from the api", :vcr) do
       visit(user_discover_path(@steve))
-      click_button "Find Top Rated Movies"
+      click_button("Find Top Rated Movies")
       expect(current_path).to(eq("/users/#{@steve.id}/movies"))
       expect(page.status_code).to(eq(200))
       expect(page).to(have_content("The Godfather Vote Average: 8.7"))
@@ -18,9 +18,9 @@ RSpec.describe("discover movies page or movies index page ") do
       expect(page).to(have_content("Dilwale Dulhania Le Jayenge Vote Average: 8.6"))
     end
 
-    it 'enter keyword into search and it returns movies with that word', :vcr do
+    it("enter keyword into search and it returns movies with that word", :vcr) do
       visit(user_discover_path(@steve))
-      fill_in("keyword",         with: "godfather")
+      fill_in("keyword",       with: "godfather")
       click_button("Submit")
       expect(current_path).to(eq("/users/#{@steve.id}/movies"))
       expect(page.status_code).to(eq(200))

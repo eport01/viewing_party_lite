@@ -1,25 +1,25 @@
 class ViewingPartiesController < ApplicationController
-  def new 
+  def new
+    @users = User.all
     @user = User.find(params[:user_id])
-
-    @result = MovieFacade.results(params[:movie_id]) 
-    # require 'pry'; binding.pry
+    @result = MovieFacade.results(params[:movie_id])
   end
 
-  def create 
+    # require 'pry'; binding.pry
+  def create
     @user = User.find(params[:user_id])
     @result = MovieFacade.results(params[:movie_id])
     @viewing_party = ViewingParty.create!(parties_params)
-    require 'pry'; binding.pry
-    redirect_to user_path(@user)
+    redirect_to(user_path(@user))
   end
 
-  private 
-  def parties_params 
+  private
+
+  def parties_params
     params.permit(:duration, :date, :time, :movie_id, :movie_title)
   end
 
-  def index 
-    @viewing_parties = ViewingParties.all 
+  def index
+    @viewing_parties = ViewingParties.all
   end
 end

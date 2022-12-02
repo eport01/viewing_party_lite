@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @viewing_party = ViewingParty.find(params[:id])
   end
 
   def new
@@ -15,7 +16,6 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.save
-
       redirect_to(user_path(@user.id))
     else
       flash[:alert] = @user.errors.full_messages
