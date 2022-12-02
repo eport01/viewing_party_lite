@@ -1,3 +1,4 @@
+<%=button_to "Discover Page", user_discover_path(@user), method: :get%>
 
 <%= form_with url: "/users/#{@user.id}/movies/#{@result.id}/viewing_parties", method: :post, local: true do |form| %>
   <center>
@@ -6,7 +7,7 @@
     <%=form.hidden_field :movie_title, :value => @result.title%>
     <tr>
     </tr>
-    
+
     <tr>
       <td><p><%= form.label :duration ,"Duration of Party" %>
       <%=form.number_field :duration %> </p></td>
@@ -28,4 +29,3 @@
 <%end%>
 
 <center> <h3>Invite Other Users</h3></center>
-
