@@ -1,13 +1,13 @@
-  <%@results.each do |result|%>
-  <center><h2><%=result.title%></h2></center>
+
+  <center><h2><%=@result.title%></h2></center>
   <center><%=button_to "Discover Movies", user_discover_path(@user), method: :get%></center>
-  <center><%=button_to "Create Viewing Party for #{result.title}"%></center>
+  <center><%=button_to "Create Viewing Party for #{@result.title}"%></center>
   <br><br>
   <table style="width:100%">
     <tr>
-      <td><strong>Vote: </strong><%=result.vote_average%></td>
-      <td><strong>Runtime: </strong><%=result.runtime%></td>
-      <td><strong>Genre: </strong><%result.genres.each do |genre|%>
+      <td><strong>Vote: </strong><%=@result.vote_average%></td>
+      <td><strong>Runtime: </strong><%=@result.runtime%></td>
+      <td><strong>Genre: </strong><%@result.genres.each do |genre|%>
         <%=genre[:name]%> 
       <%end%></td>
     </tr>
@@ -15,17 +15,17 @@
 
   <section>
   <hr>
-  <h3>Summary: </h3><p><%=result.overview%></p>
-<%end%>
+  <h3>Summary: </h3><p><%=@result.overview%></p>
 
-<h3>Cast <%@cast.cast.take(10).each do |cast_member|%></h3>
-  <p><strong>Actor Name: </strong><%=cast_member[:name]%>
-  <strong>Character Name: </strong><%=cast_member[:character]%></p>
+
+<h3>Cast <%@cast.take(10).each do |cast_member|%></h3>
+  <p><strong>Actor Name: </strong><%=cast_member.name%>
+  <strong>Character Name: </strong><%=cast_member.character%></p>
 <%end%>
-<h3><%=@reviews[:results].count%> Reviews</h3>
-<%@reviews[:results].each do |result|%>
-<%if result[:author] != nil %>
-  <p><li><%=result[:content]%></li></p>
+<h3><%=@reviews.count%> Reviews</h3>
+<%@reviews.each do |review|%>
+<%if review.author != nil %>
+  <p><li><%=review.content%></li></p>
   <br>
 <%end%>
 <%end%>
