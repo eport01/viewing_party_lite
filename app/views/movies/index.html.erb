@@ -1,3 +1,5 @@
+
+
 <%=button_to "Discover Movies", user_discover_path(@user), method: :get%>
 <%@results.each do |result|%>
   <p>
@@ -5,5 +7,8 @@
   Vote Average: <%=result.vote_average%>
   <img src=<%=result.pic%> alt="images" width="100" height="100">
   <br>
+        </div>
+      </div>
+  </div>
   </p>
 <%end%>

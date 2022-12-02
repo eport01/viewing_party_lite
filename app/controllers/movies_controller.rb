@@ -12,8 +12,6 @@ class MoviesController < ApplicationController
     end
   end
 
-    #put conditional here
-    #if param keyword
   def show
     @user = User.find(params[:user_id])
 
