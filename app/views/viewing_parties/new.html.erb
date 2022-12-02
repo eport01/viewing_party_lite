@@ -25,15 +25,16 @@
 
     <tr>
       <td>
-        <%=form.collection_check_boxes(:invitees, User.all, :id, :name)%>
+        <%=form.label :invitees, "Invite Other Users: "%>
+        <p><%=form.collection_check_boxes(:invitees, User.all, :id, :name)%></p>
       </td>
     </tr>
-
-    <p><%= form.submit "Create Party"%></p>
   </table>
+  <p><%= form.submit "Create Party"%></p>
+
   </center>
 
 <%end%>
 
-<center> <h3>Invite Other Users</h3></center>
+
 
