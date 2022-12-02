@@ -7,7 +7,7 @@
       <td><strong>Vote: </strong><%=@result.vote_average%></td>
       <td><strong>Runtime: </strong><%=@result.runtime%></td>
       <td><strong>Genre: </strong><%@result.genres.each do |genre|%>
-        <%=genre[:name]%> 
+        <%=genre[:name]%>
       <%end%></td>
     </tr>
   </table>
@@ -30,4 +30,3 @@
 <%end%>
 <%end%>
 </section>
-

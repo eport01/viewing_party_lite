@@ -1,15 +1,14 @@
-class MovieFacade 
+class MovieFacade
   # def initialize(user_id)
-  #   @user_id = user_id 
+  #   @user_id = user_id
   # end
   def self.results(movie_id)
     # require 'pry'; binding.pry
     result = MovieService.movie_results(movie_id)
     MovieResult.new(result)
-    
   end
 
-  def self.reviews(movie_id) 
+  def self.reviews(movie_id)
     # require 'pry'; binding.pry
     MovieService.movie_reviews(movie_id)[:results].map do |review|
       MovieReview.new(review)
@@ -18,7 +17,6 @@ class MovieFacade
 
   def self.cast(movie_id)
     # require 'pry'; binding.pry
-
     MovieService.movie_cast(movie_id)[:cast].map do |cast|
       MovieCast.new(cast)
     end
