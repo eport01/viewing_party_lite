@@ -31,7 +31,7 @@ RSpec.describe("New Register Page") do
         fill_in :password, with: "thisisatest"
         fill_in :password_confirmation, with: "thisisatest"
         click_on("Create New User")
-        expect(page).to have_content("Email has already been taken")
+        expect(page).to have_content("Passwords need to match")
         fill_in("Name",         with: "Mary")
         fill_in("Email",         with: "mary.smith2@gmail.com")
         fill_in :password, with: "thisisatest"
@@ -42,18 +42,31 @@ RSpec.describe("New Register Page") do
       end
     end
 
-    describe 'creates new user when passwords match' do
+    describe 'I see a form to fill in name, email, password, and password conf' do
       it 'can create new user and bring back to user dashboard' do 
-      fill_in :name, with: "Emily"
-      fill_in :email, with: "test@gmail.com"
-      fill_in :password, with: "testing123"
-      fill_in :password_confirmation, with: "testing123"
-      click_on("Create New User")
-      new_user = User.last.id
-      expect(current_path).to eq(user_path(new_user))
-      expect(page).to have_content("welcome Emily")
-      
+        fill_in :name, with: "Emily"
+        fill_in :email, with: "test@gmail.com"
+        fill_in :password, with: "testing123"
+        fill_in :password_confirmation, with: "testing123"
+        click_on("Create New User")
+        new_user = User.last.id
+        expect(current_path).to eq(user_path(new_user))
+        expect(page).to have_content("welcome Emily")
+      end
 
+    end
+
+    describe 'if i fail to fill in name, unique email, or matching password' do 
+      it 'im taken back to register page with error message' do 
+        fill_in :name, with: "Emily"
+        fill_in :email, with: "test@gmail.com"
+        fill_in :password, with: "testing123"
+        fill_in :password_confirmation, with: "testing321"
+        click_on("Create New User")
+        expect(current_path).to eq(register_path)
+        expect(page).to have_content("Passwords need to match")
+
+      end
     end
   end
 end

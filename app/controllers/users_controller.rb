@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     # require 'pry'; binding.pry
-    if @user.password == @user.password_confirmation
+    if @user.password == @user.password_confirmation && @user.valid?
       @user.save
       flash[:success] = "welcome #{@user.name}"
       redirect_to(user_path(@user.id))
