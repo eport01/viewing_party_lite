@@ -30,7 +30,6 @@ class UsersController < ApplicationController
       flash[:bad_credentials] = "Sorry, your credentials are bad."
       redirect_to login_path
     end
-
   end
 
   private

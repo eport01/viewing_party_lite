@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :viewing_parties,   through: :user_viewing_parties
   validates_presence_of :password_digest 
   has_secure_password
+  validates :password, confirmation: true, on: :create  
 
   def view_party_status
     viewing_parties.includes(:user_viewing_parties).select("viewing_parties.*, user_viewing_parties.status")
