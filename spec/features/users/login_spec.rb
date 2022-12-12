@@ -13,11 +13,23 @@ RSpec.describe "Logging in" do
       expect(current_path).to eq('/login')
       fill_in("Name",         with: "Mary")
       fill_in("Email",         with: "mary.smith@gmail.com")
-      fill_in :password, with: "test123"
-      fill_in :password_confirmation, with: "test123"
+      fill_in :password, with: "test432"
+      fill_in :password_confirmation, with: "test432"
 
       click_on "Submit" 
       expect(current_path).to eq(user_path(@mary))
+    end
+
+    it 'cannot login with bad credentials' do 
+      visit login_path 
+      fill_in("Name",         with: "Mary")
+      fill_in("Email",         with: "mary.smith@gmail.com")
+      fill_in :password, with: "bad_password"
+      fill_in :password_confirmation, with: "test123"
+
+      click_on "Submit"
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("Sorry, your credentials are bad.")
     end
   end
 
