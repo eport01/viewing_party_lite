@@ -20,7 +20,7 @@ RSpec.describe "Logging in" do
       expect(current_path).to eq(user_path(@mary))
     end
 
-    it 'cannot login with bad credentials' do 
+    it 'cannot login with bad credentials and am taken back to login page with message' do 
       visit login_path 
       fill_in("Name",         with: "Mary")
       fill_in("Email",         with: "mary.smith@gmail.com")
