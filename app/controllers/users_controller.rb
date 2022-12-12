@@ -10,11 +10,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.valid?
+    # require 'pry'; binding.pry
+    if @user.password == @user.password_confirmation
       @user.save
+      flash[:success] = "welcome #{@user.name}"
       redirect_to(user_path(@user.id))
     else
-      flash[:alert] = @user.errors.full_messages
+      flash[:failure] = "Passwords need to match"
       redirect_to(register_path)
     end
   end
@@ -22,6 +24,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email)
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 end
