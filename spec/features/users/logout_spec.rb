@@ -20,6 +20,9 @@ RSpec.describe "Logging out" do
       click_on "Submit" 
       expect(current_path).to eq(user_path(@mary))
       click_on "Home"
+      expect(page).to_not have_link "Log in"
+      expect(page).to_not have_link "Create New User"
+
       expect(page).to have_link "Log out"
       click_on "Log out" 
       expect(current_path).to eq(root_path)
