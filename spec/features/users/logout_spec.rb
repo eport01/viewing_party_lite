@@ -29,4 +29,14 @@ RSpec.describe "Logging out" do
     end
   end
 
+  describe 'as a visitor when i visit landing page' do 
+    it 'i do not see section of page that lists existing users' do 
+      visit root_path 
+      expect(page).to_not have_content("Existing Users")
+      expect(page).to_not have_content("steve.smith@gmail.com")
+      expect(page).to_not have_content("mary.smith@gmail.com")
+
+    end
+  end
+
 end
