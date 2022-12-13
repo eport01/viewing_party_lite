@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   root("welcome#index")
 
-  resources(:users,   except: [:new, :create]) do
+  resources(:users) do
     resources(:movies) do
       resources(:viewing_parties)
     end
@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     # get '/movies/search', to: 'movies#search'
   get("/register",   to: "users#new")
   post("/register",   to: "users#create")
+  get("/login",   to: "users#login_form")
+  post("/login",   to: "users#login_user")
 end

@@ -3,8 +3,9 @@ require "rails_helper"
 
 RSpec.describe("user dashboard page") do
   before(:each) do
-    @steve = User.create!(    name: "Steve",     email: "steve.smith@gmail.com")
-    @mary = User.create!(    name: "Mary",     email: "mary.smith@gmail.com")
+    @steve = User.create!(    name: "Steve",     email: "steve.smith@gmail.com",     password: "123test",     password_confirmation: "123test")
+    @mary = User.create!(    name: "Mary",     email: "mary.smith@gmail.com",     password: "test123",     password_confirmation: "test123")
+    visit("/register")
   end
 
   describe("user show") do
