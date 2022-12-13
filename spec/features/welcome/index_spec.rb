@@ -29,7 +29,11 @@ RSpec.describe("Welcome Index Page") do
 
   describe 'on landing page as a visitor' do 
     it 'when i click on dashboard button, i remain on landing page and i see an error message' do 
-      
+      expect(page).to_not have_content("Existing Users")
+      expect(page).to have_button "Dashboard"
+      click_button "Dashboard"
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("You must be logged in or registered to access your dashboard")
     end
   end
 end

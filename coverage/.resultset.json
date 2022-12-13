@@ -119,11 +119,15 @@
           null,
           null,
           null,
-          11,
+          14,
           null,
           null,
           1,
           0,
+          null,
+          null,
+          1,
+          1,
           null,
           null,
           null,
@@ -232,11 +236,11 @@
           null,
           null,
           null,
-          11,
+          13,
           2,
           null,
           null,
-          11,
+          13,
           null,
           null,
           null,
@@ -355,6 +359,28 @@
           null
         ]
       },
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/viewing_party_lite/app/controllers/default/dashboard_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/emilyport/Desktop/Turing/mod_3/projects/viewing_party_lite/app/controllers/admin/dashboard_controller.rb": {
         "lines": [
           0,
@@ -385,6 +411,6 @@
         }
       }
     },
-    "timestamp": 1670961626
+    "timestamp": 1670963086
   }
 }
