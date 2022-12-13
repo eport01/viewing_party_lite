@@ -26,4 +26,10 @@ RSpec.describe("Welcome Index Page") do
       end
     end
   end
+
+  describe 'on landing page as a visitor' do 
+    it 'when i click on dashboard button, i remain on landing page and i see an error message' do 
+      
+    end
+  end
 end
