@@ -1,5 +1,6 @@
 <%= cookies.encrypted[:greeting]%>
 
+<center><%=button_to"Dashboard", default_dashboard_path, method: :get %></center>
 
 <%if @current_user == nil %>
   <div class="row">

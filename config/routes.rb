@@ -23,4 +23,8 @@ Rails.application.routes.draw do
   namespace :admin do 
     get '/dashboard', to: 'dashboard#index'
   end
+
+  namespace :default do 
+    get '/dashboard', to: 'dashboard#index'
+  end
 end
