@@ -17,7 +17,10 @@
           1,
           1,
           1,
+          null,
+          null,
           1,
+          null,
           null,
           1,
           6,
@@ -110,6 +113,20 @@
       "/Users/emilyport/Desktop/Turing/mod_3/projects/viewing_party_lite/app/controllers/application_controller.rb": {
         "lines": [
           1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -212,7 +229,10 @@
         "lines": [
           1,
           1,
-          5,
+          6,
+          6,
+          null,
+          6,
           null,
           null
         ]
@@ -234,6 +254,7 @@
           5,
           3,
           3,
+          null,
           3,
           null,
           2,
@@ -244,12 +265,25 @@
           1,
           2,
           2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           1,
-          1,
+          null,
           1,
           null,
           1,
           1,
+          null,
+          null,
+          null,
+          1,
+          null,
           null,
           null,
           null,
@@ -298,8 +332,37 @@
           null,
           null
         ]
+      },
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/viewing_party_lite/app/controllers/admin/dashboard_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1670873877
+    "timestamp": 1670955744
   }
 }
