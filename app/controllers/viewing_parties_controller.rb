@@ -1,6 +1,9 @@
 class ViewingPartiesController < ApplicationController
   def new
-    if @current_user != nil 
+    @user = User.find(params[:user_id])
+    # require 'pry'; binding.pry
+    if @user == current_user
+
       @users = User.all
       @user = User.find(params[:user_id])
       @result = MovieFacade.results(params[:movie_id])

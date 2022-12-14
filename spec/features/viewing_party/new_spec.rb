@@ -6,8 +6,17 @@ RSpec.describe("New Viewing Party Page") do
     @steve = User.create!(name: "Steve", email: "steve.smith@gmail.com", password: 'test123', password_confirmation: 'test123')
     @mary = User.create!(name: "Mary", email: "mary.smith@gmail.com", password: 'test432', password_confirmation: 'test432')
     @dwight = User.create!(    name: "Dwight",     email: "d.smith@gmail.com", password: 'test456', password_confirmation: 'test456')
+    visit root_path 
+    click_on "Log In" 
+    expect(current_path).to eq('/login')
+    fill_in("Name",         with: "Steve")
+    fill_in("Email",         with: "steve.smith@gmail.com")
+    fill_in :password, with: "test123"
+    fill_in :password_confirmation, with: "test123"
 
+    click_on "Submit"   
     visit(new_user_movie_viewing_party_path(@steve, "238"))
+
   end
 
   it("has ", :vcr) do
