@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-  
+  helper_method :current_user 
+  #in view can use current_user without using instance variable version
+  #before action and after action
+
   def current_user
     #check if user is stored in cookie, we find user and set equal to current user
     #if we've done it already we don't need to do code after || 

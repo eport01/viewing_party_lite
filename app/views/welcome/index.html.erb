@@ -2,7 +2,7 @@
 
 <center><%=button_to"Dashboard", default_dashboard_path, method: :get %></center>
 
-<%if @current_user == nil %>
+<%if current_user == nil %>
   <div class="row">
     <div class="column">
       <div id="creation">
