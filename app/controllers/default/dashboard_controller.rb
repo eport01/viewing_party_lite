@@ -1,7 +1,7 @@
 class Default::DashboardController < ApplicationController
   before_action :require_default 
   def index 
-    redirect_to user_path(@current_user)
+    redirect_to user_path(current_user)
 
 
   end
