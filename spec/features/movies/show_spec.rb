@@ -23,5 +23,10 @@ RSpec.describe("movies show page") do
     click_button "Create Viewing Party for #{@movie.title}"
     expect(current_path).to eq(user_movie_path(@mary, @movie.id))
     expect(page).to have_content("You must be logged in or registered to create a movie party")
+    
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@mary)
+    click_button "Create Viewing Party for #{@movie.title}"
+    expect(current_path).to eq(new_user_movie_viewing_party_path(@steve, "238"))
+
   end
 end
