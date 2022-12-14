@@ -34,14 +34,8 @@ RSpec.describe "Logging in" do
   end
   describe 'as a registered user, when i visit landing page' do 
     it 'the list of existing users is just a list of emails, not a link to show page' do 
-      click_on "Log In" 
-      expect(current_path).to eq('/login')
-      fill_in("Name",         with: "Mary")
-      fill_in("Email",         with: "mary.smith@gmail.com")
-      fill_in :password, with: "test432"
-      fill_in :password_confirmation, with: "test432"
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@mary)
 
-      click_on "Submit" 
       click_on "Home"
       expect(page).to have_content("steve.smith@gmail.com")
       expect(page).to_not have_link("steve.smith@gmail.com")
