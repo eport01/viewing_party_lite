@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
 
   def show
-    # @user = User.find(params[:id])
-    # @parties = @user.view_party_status 
+    @user = User.find(params[:id])
+    @parties = @user.view_party_status 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id 
       @user = User.find(params[:id])
       @parties = @user.view_party_status 
-    else
-      flash[:message] = "You must be logged in or registered to access your dashboard"
-      redirect_to root_path 
+      # flash[:message] = "You must be logged in or registered to access your dashboard"
+      # redirect_to root_path 
+
     end
   end
 

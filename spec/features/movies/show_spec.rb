@@ -8,11 +8,6 @@ RSpec.describe("movies show page") do
     @movie = MovieResult.new(    title: "The Godfather",     vote_average: "8.715",     runtime: "175",     genres: "Drama Crime",     overview: "Spanning the years",     id: 238)
   end
 
-    # VCR.insert_cassette "multiple API calls on a movie show"
-    # visit(user_discover_path(@steve))
-    # click_button("Find Top Rated Movies")
-    # expect(page).to have_link("The Godfather")
-    # click_link "The Godfather"
   it("displays a movies information from multiple API calls on a movie show page", :vcr) do
     visit(user_movie_path(@mary, @movie.id))
     expect(page.status_code).to(eq(200))
@@ -21,5 +16,12 @@ RSpec.describe("movies show page") do
     expect(page).to(have_content("Actor Name: Marlon Brando Character Name: Don Vito Corleone"))
     expect(page).to(have_content("The best movie ever..."))
     expect(page).to(have_button("Discover Movies"))
+  end
+
+  it 'when a visitor clicks on create viewing party, they are redirected back to movie show page with error message', :vcr do 
+    visit(user_movie_path(@mary, @movie.id))
+    click_button "Create Viewing Party for #{@movie.title}"
+    expect(current_path).to eq(user_movie_path(@mary, @movie.id))
+    expect(page).to have_content("You must be logged in or registered to create a movie party")
   end
 end

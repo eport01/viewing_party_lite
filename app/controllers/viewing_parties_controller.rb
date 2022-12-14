@@ -1,37 +1,15 @@
 class ViewingPartiesController < ApplicationController
   def new
     if @current_user != nil 
-
       @users = User.all
       @user = User.find(params[:user_id])
       @result = MovieFacade.results(params[:movie_id])
     else
-      # require 'pry'; binding.pry
       @user = User.find(params[:user_id])
       @result = MovieFacade.results(params[:movie_id])
       redirect_to user_movie_path(@user, @result.id)
       flash[:party] = "You must be logged in or registered to create a movie party"
     end
-
-    # if @current_user != nil 
-    #   #if @current_user == @user 
-    #   # require 'pry'; binding.pry
-    #   @users = User.all
-    #   @user = User.find(params[:user_id])
-    #   @result = MovieFacade.results(params[:movie_id])
-    # else
-    #   @users = User.all
-    #   @user = User.find(params[:user_id])
-    #   @result = MovieFacade.results(params[:movie_id])
-    #   # require 'pry'; binding.pry
-    #   # require 'pry'; binding.pry
-
-    #   # session[:return_to] = request.referrer
-    #   redirect_to user_movie_path(@user, @result)
-      # session[:return_to] = request.referrer
-      # flash[:message] = "You must be logged in or registered to create a party"
-
-    # end 
   end
 
   def create
